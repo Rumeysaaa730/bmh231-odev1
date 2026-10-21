@@ -14,6 +14,11 @@ function gonder(res, durumKodu, icerikTuru, govde, ekBasliklar = {}) {
   res.end(govde);
 }
 
+// JavaScript nesnesini JSON metnine çevirip gönderir.
+function json(res, durumKodu, veri) {
+  gonder(res, durumKodu, 'application/json', JSON.stringify(veri, null, 2));
+}
+
 const anaSayfa = `<!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -37,6 +42,13 @@ const sunucu = http.createServer((req, res) => {
   switch (yol) {
     case '/':
       return gonder(res, 200, 'text/html', anaSayfa);
+
+    case '/api/ders':
+      return json(res, 200, {
+        kod: 'BMH231',
+        ad: 'Web Programlama',
+        gun: 'Pazartesi',
+      });
 
     default:
       return gonder(res, 404, 'text/plain', 'Sayfa bulunamadı');
