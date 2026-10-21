@@ -27,7 +27,7 @@ const anaSayfa = `<!DOCTYPE html>
   <title>BMH231 Ödev 1</title>
 </head>
 <body>
-  <h1>BMH231 Web Programlama – Ödev 1</h1>
+    <h1>BMH231 Ödev 1 – Node.js Sunucusu</h1> Web Programlama – Ödev 1</h1>
   <p>Node.js http modülüyle yazılmış küçük bir sunucu.</p>
   <p><a href="/hakkimda">Hakkımda</a></p>
 </body>
