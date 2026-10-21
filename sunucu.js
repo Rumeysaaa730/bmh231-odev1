@@ -33,6 +33,20 @@ const anaSayfa = `<!DOCTYPE html>
 </body>
 </html>`;
 
+const hakkimdaSayfasi = `<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Hakkımda</title>
+</head>
+<body>
+  <h1>Hakkımda</h1>
+  <p>Merhaba, ben Rumeysa Ak. Yozgat Bozok Üniversitesi Bilgisayar Mühendisliği 2. sınıf öğrencisiyim.</p>
+    <p>Yazılımla uğraşmayı seviyorum ve kendimi bu alanda geliştirmek istiyorum.</p>
+  <p><a href="/">Ana sayfaya dön</a></p>
+</body>
+</html>`;
+
 const sunucu = http.createServer((req, res) => {
   // Sorgu dizesini (ör. ?a=1) yoldan ayırıyoruz.
   const yol = new URL(req.url, `http://${req.headers.host || 'localhost'}`).pathname;
@@ -48,6 +62,9 @@ const sunucu = http.createServer((req, res) => {
   switch (yol) {
     case '/':
       return gonder(res, 200, 'text/html', anaSayfa);
+
+    case '/hakkimda':
+      return gonder(res, 200, 'text/html', hakkimdaSayfasi);
 
     case '/api/ders':
       return json(res, 200, {
