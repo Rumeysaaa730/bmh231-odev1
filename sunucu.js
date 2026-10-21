@@ -2,6 +2,7 @@
 // Yalnızca Node.js'in http modülü ve dayjs paketi kullanılmıştır (Express yok).
 
 const http = require('http');
+const dayjs = require('dayjs');
 
 const PORT = 3000;
 
@@ -49,6 +50,16 @@ const sunucu = http.createServer((req, res) => {
         ad: 'Web Programlama',
         gun: 'Pazartesi',
       });
+
+    case '/api/agep': {
+      const sonTeslim = dayjs('2026-11-01');
+      const bugun = dayjs().startOf('day');
+      return json(res, 200, {
+        sonTeslim: sonTeslim.format('DD.MM.YYYY'),
+        bugun: bugun.format('DD.MM.YYYY'),
+        kalanGun: sonTeslim.diff(bugun, 'day'),
+      });
+    }
 
     default:
       return gonder(res, 404, 'text/plain', 'Sayfa bulunamadı');
