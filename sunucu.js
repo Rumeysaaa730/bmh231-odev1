@@ -70,7 +70,7 @@ const sunucu = http.createServer((req, res) => {
       return json(res, 200, {
         kod: 'BMH231',
         ad: 'Web Programlama',
-        gun: 'Pazartesi',
+        gun: 'Cuma',
       });
 
     case '/api/agep': {
