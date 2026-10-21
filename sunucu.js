@@ -40,6 +40,11 @@ const sunucu = http.createServer((req, res) => {
   // Her isteğin yöntemini ve yolunu uçbirime yaz.
   console.log(`${req.method} ${yol}`);
 
+  // GET dışındaki yöntemler: 405 + Allow başlığı
+  if (req.method !== 'GET') {
+    return gonder(res, 405, 'text/plain', 'Yöntem desteklenmiyor', { Allow: 'GET' });
+  }
+
   switch (yol) {
     case '/':
       return gonder(res, 200, 'text/html', anaSayfa);
